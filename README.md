@@ -1,7 +1,6 @@
 # Indrani Kar | Product Owner & Strategy Master Portfolio
 
 > **Candidate:** Indrani Kar (B.E. Computer Science + MBA Marketing)  
-> **Target Position:** Product Owner / Customer Strategy  
 > **Master Portfolio Hub:** [indranikar.github.io/product-portfolio](https://indranikar.github.io/product-portfolio/)
 
 ---

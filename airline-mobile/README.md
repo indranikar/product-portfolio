@@ -1,8 +1,7 @@
 # Enterprise Airline Mobile Product Case Study & Interactive PRD
 
 > **Candidate:** Indrani Kar (B.E. Computer Science + MBA Marketing)  
-> **Target Position:** Product Owner – Mobile Services & Customer Experience  
-> **Live Web Demo:** [indrani-airline-po-portfolio.vercel.app](https://indranikar.github.io/airline-mobile-prd)
+> **Live Web Demo:** [indranikar.github.io/product-portfolio/airline-mobile/](https://indranikar.github.io/product-portfolio/airline-mobile/)
 
 ---
 
