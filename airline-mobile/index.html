@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indrani Kar | Product Owner Portfolio – Airline Mobile Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0B0F19;
+      --bg-card: rgba(17, 24, 39, 0.7);
+      --bg-card-hover: rgba(30, 41, 59, 0.8);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(56, 189, 248, 0.3);
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --accent-blue: #2563EB;
+      --accent-cyan: #38BDF8;
+      --accent-indigo: #6366F1;
+      --accent-emerald: #10B981;
+      --accent-amber: #F59E0B;
+      --accent-rose: #F43F5E;
+      --glass-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 85% 65%, rgba(56, 189, 248, 0.12) 0%, transparent 45%);
+      background-attachment: fixed;
+    }
+
+    /* Container & Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(11, 15, 25, 0.8);
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 0;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #FFF;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+    }
+
+    .brand-title h1 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-title p {
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-cyan);
+    }
+
+    .btn-contact {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-indigo));
+      color: white;
+      padding: 8px 18px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-contact:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 64px 0 48px;
+      text-align: center;
+      position: relative;
+    }
+
+    .badge-wrapper {
+      display: inline-flex;
+      gap: 8px;
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid var(--border-highlight);
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(8px);
+    }
+
+    .badge {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      line-height: 1.2;
+      background: linear-gradient(180deg, #FFFFFF 0%, #94A3B8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto 32px;
+      font-weight: 400;
+    }
+
+    .triad-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto 40px;
+    }
+
+    .triad-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 20px;
+      border-radius: var(--radius-md);
+      backdrop-filter: blur(12px);
+      text-align: left;
+      transition: all 0.3s ease;
+    }
+
+    .triad-card:hover {
+      border-color: var(--border-highlight);
+      transform: translateY(-4px);
+    }
+
+    .triad-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(37, 99, 235, 0.2);
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .triad-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+
+    .triad-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Section Styling */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    /* Module 1: Interactive Journey & Phone Mockup */
+    .journey-section {
+      padding: 48px 0;
+    }
+
+    .tabs-container {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .tab-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(56, 189, 248, 0.2));
+      border-color: var(--accent-cyan);
+      color: var(--text-main);
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+    }
+
+    .journey-display {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 32px;
+      align-items: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      backdrop-filter: blur(16px);
+    }
+
+    .journey-info h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--accent-cyan);
+    }
+
+    .journey-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .friction-box {
+      background: rgba(244, 63, 94, 0.1);
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      padding: 16px;
+      border-radius: var(--radius-md);
+      margin-bottom: 20px;
+    }
+
+    .friction-box h4 {
+      color: var(--accent-rose);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .solution-box {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 16px;
+      border-radius: var(--radius-md);
+    }
+
+    .solution-box h4 {
+      color: var(--accent-emerald);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* iPhone Frame Mockup */
+    .iphone-mockup {
+      width: 320px;
+      height: 600px;
+      background: #000;
+      border-radius: 44px;
+      border: 10px solid #1E293B;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 0 2px rgba(255,255,255,0.1);
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .iphone-notch {
+      width: 120px;
+      height: 24px;
+      background: #1E293B;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 14px;
+      z-index: 10;
+    }
+
+    .iphone-screen {
+      flex: 1;
+      background: #0F172A;
+      padding: 36px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      color: #FFF;
+      font-size: 0.8rem;
+      position: relative;
+    }
+
+    /* Screen UI Components */
+    .app-header-ui {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 16px;
+    }
+
+    .airline-logo-text {
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--accent-cyan);
+    }
+
+    .flight-card-ui {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .flight-route {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .wallet-pass-ui {
+      background: linear-gradient(135deg, #1E3A8A, #3B82F6);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      margin-top: 10px;
+    }
+
+    .barcode-placeholder {
+      background: #FFF;
+      height: 50px;
+      border-radius: 6px;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+    }
+
+    .push-notification-ui {
+      background: rgba(30, 41, 59, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--accent-cyan);
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+    }
+
+    /* Module 2: User Stories Accordion */
+    .requirements-section {
+      padding: 48px 0;
+    }
+
+    .story-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      margin-bottom: 16px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .story-header {
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      background: rgba(30, 41, 59, 0.4);
+    }
+
+    .story-header h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .story-body {
+      padding: 24px;
+      display: none;
+      border-top: 1px solid var(--border-color);
+      background: rgba(15, 23, 42, 0.6);
+    }
+
+    .story-card.open .story-body {
+      display: block;
+    }
+
+    .gherkin-box {
+      background: #090D16;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: #CBD5E1;
+      overflow-x: auto;
+      margin-top: 12px;
+    }
+
+    .gherkin-keyword {
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    /* Module 3: Live RICE Calculator */
+    .calculator-section {
+      padding: 48px 0;
+    }
+
+    .calc-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-highlight);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 32px;
+      backdrop-filter: blur(16px);
+      box-shadow: var(--glass-shadow);
+    }
+
+    .slider-group {
+      margin-bottom: 20px;
+    }
+
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .slider-input {
+      width: 100%;
+      accent-color: var(--accent-cyan);
+    }
+
+    .score-box {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(15, 23, 42, 0.8));
+      border: 1px solid var(--accent-cyan);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .score-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      line-height: 1;
+      margin: 12px 0;
+    }
+
+    .priority-badge {
+      background: var(--accent-emerald);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 900px) {
+      .triad-grid { grid-template-columns: 1fr; }
+      .journey-display { grid-template-columns: 1fr; }
+      .calc-container { grid-template-columns: 1fr; }
+      .hero-title { font-size: 2.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-wrapper">
+      <div class="brand">
+        <div class="brand-avatar">IK</div>
+        <div class="brand-title">
+          <h1>INDRANI KAR</h1>
+          <p>Product Owner – Mobile Services</p>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#journey">Passenger Journey</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#requirements">PRD Specs</a>
+        <a href="#calculator">RICE Calculator</a>
+        <a href="#release">Mobile Ops</a>
+        <a href="#observability">Observability & ROI</a>
+        <a href="#contact" class="btn-contact">Contact Candidate</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero container">
+    <div class="badge-wrapper">
+      <span class="badge">🚀 B2B2C Mobile Product Portfolio</span>
+      <span class="badge">• Enterprise Airline Mobile Solution Case Study</span>
+    </div>
+    <h1 class="hero-title">Enterprise Airline Mobile App<br>Requirements & Product Blueprint</h1>
+    <p class="hero-subtitle">
+      A comprehensive technical PRD and product strategy auditing the end-to-end mobile passenger lifecycle—from booking conversion to day-of-travel gate operations.
+    </p>
+
+    <div class="triad-grid">
+      <div class="triad-card">
+        <div class="triad-icon">💻</div>
+        <h3>B.E. Computer Science</h3>
+        <p>APIs, REST/JSON schemas, SQLite caching, and hybrid mobile architecture literacy.</p>
+      </div>
+      <div class="triad-card">
+        <div class="triad-icon">📊</div>
+        <h3>MBA in Marketing</h3>
+        <p>Booking conversion funnels, ancillary attach rates, and user retention strategy.</p>
+      </div>
+      <div class="triad-card">
+        <div class="triad-icon">🤝</div>
+        <h3>Client Stakeholder Ownership</h3>
+        <p>280+ high-value relationships managed, 100% retention, trade-off negotiation skills.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Module 1: Interactive Journey -->
+  <section id="journey" class="journey-section container">
+    <h2 class="section-title">1. The 4-Stage Mobile Passenger Journey</h2>
+    <p class="section-subtitle">Click the tabs below to explore the UX audit and live phone UI simulation for each lifecycle stage.</p>
+
+    <div class="tabs-container">
+      <button class="tab-btn active" onclick="switchStage(1)">1. Shop & Book</button>
+      <button class="tab-btn" onclick="switchStage(2)">2. Manage Booking (MMB)</button>
+      <button class="tab-btn" onclick="switchStage(3)">3. Check-In (SSCI)</button>
+      <button class="tab-btn" onclick="switchStage(4)">4. Day of Travel</button>
+    </div>
+
+    <div class="journey-display">
+      <div class="journey-info">
+        <h3 id="stage-title">Stage 1: Shop & Book (Inspiration to Payment)</h3>
+        <p class="journey-desc" id="stage-desc">
+          Passengers search flights, compare Fare Families (Flex vs Light), select paid seats/bags, and complete 3D Secure (3DS) payment authentication.
+        </p>
+
+        <div class="friction-box">
+          <h4>Friction Identified</h4>
+          <p id="stage-friction">Static ancillary lists during checkout cause drop-off and miss high-margin ancillary upsell opportunities.</p>
+        </div>
+
+        <div class="solution-box">
+          <h4>PO Requirement Solution</h4>
+          <p id="stage-solution">Interactive 3D seat map with dynamic pricing tiers + 1-tap Apple Pay integration to boost conversion by 18%.</p>
+        </div>
+      </div>
+
+      <!-- Live iPhone Screen Simulation -->
+      <div class="iphone-mockup">
+        <div class="iphone-notch"></div>
+        <div class="iphone-screen" id="phone-screen">
+          <div class="app-header-ui">
+            <span class="airline-logo-text">GLOBAL AIRLINES</span>
+            <span>✈️</span>
+          </div>
+          <div class="flight-card-ui">
+            <div class="flight-route"><span>BLR</span> ➔ <span>LHR</span></div>
+            <div style="color: var(--text-muted); font-size: 0.75rem;">Flight 1A-450 • Economy Flex</div>
+          </div>
+          <div style="background: rgba(37,99,235,0.2); border: 1px dashed var(--accent-cyan); border-radius: 10px; padding: 12px; margin-top: 10px;">
+            <div style="font-weight: 700; color: var(--accent-cyan);">Extra Legroom Seat</div>
+            <div style="font-size: 0.75rem; color: #94A3B8;">Select Seat 12A (+$35.00)</div>
+          </div>
+          <div style="margin-top: auto; background: var(--accent-blue); padding: 10px; text-align: center; border-radius: 10px; font-weight: 700;">
+            Pay with Apple Pay
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- System Architecture Section -->
+  <section id="architecture" class="calculator-section container">
+    <h2 class="section-title">System Architecture & API Data Flow</h2>
+    <p class="section-subtitle">Visual representation of how the mobile application layer interfaces with middleware aggregation and airline PSS/DCS backend systems.</p>
+
+    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 32px; backdrop-filter: blur(16px);">
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px;">
+        
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--accent-cyan); border-radius: 12px; padding: 16px; text-align: center;">
+          <div style="font-size: 1.5rem; margin-bottom: 4px;">📱</div>
+          <div style="font-weight: 700; color: var(--accent-cyan); font-size: 0.9rem;">1. Mobile App Client</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">iOS/Android Native Shell, Angular WebViews, SQLite Cache</div>
+        </div>
+
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--accent-blue); border-radius: 12px; padding: 16px; text-align: center;">
+          <div style="font-size: 1.5rem; margin-bottom: 4px;">⚡</div>
+          <div style="font-weight: 700; color: var(--accent-blue); font-size: 0.9rem;">2. API Middleware Layer</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Payload Aggregation, JSON Transformation, Sub-second REST</div>
+        </div>
+
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--accent-indigo); border-radius: 12px; padding: 16px; text-align: center;">
+          <div style="font-size: 1.5rem; margin-bottom: 4px;">⚙️</div>
+          <div style="font-weight: 700; color: var(--accent-indigo); font-size: 0.9rem;">3. Airline PSS / DCS Core</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">PNR Inventory, Ticketing Engine, Gate Control Operations</div>
+        </div>
+
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--accent-emerald); border-radius: 12px; padding: 16px; text-align: center;">
+          <div style="font-size: 1.5rem; margin-bottom: 4px;">🌐</div>
+          <div style="font-weight: 700; color: var(--accent-emerald); font-size: 0.9rem;">4. Push & Gateways</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">APNS/FCM Push Servers, 3DS Gateways, Apple Wallet SDK</div>
+        </div>
+
+      </div>
+
+      <div style="background: #090D16; border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #94A3B8;">
+        <div style="color: var(--accent-cyan); font-weight: 700; margin-bottom: 8px;">// API SEQUENCE FLOW: Self-Service Check-In (SSCI) Boarding Pass Payload</div>
+        <div>[Mobile App] ──(HTTP GET /v2/checkin/boardingpass?pnr=X7K9PQ)──> [API Middleware]</div>
+        <div>[API Middleware] ──(DCS Engine Query)──> [Airline DCS Backend Core]</div>
+        <div style="color: var(--accent-emerald);">[DCS Backend Core] ──(Returns Ticket Status OK + Gate Info)──> [API Middleware]</div>
+        <div style="color: var(--accent-emerald);">[API Middleware] ──(Aggregated Lightweight JSON Payload)──> [Mobile App]</div>
+        <div style="color: var(--accent-amber);">[Mobile App] ──(Cache in Local Encrypted SQLite & Render .pkpass)──> [Apple Wallet SDK]</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Module 2: User Stories Accordion -->
+  <section id="requirements" class="requirements-section container">
+    <h2 class="section-title">2. Production-Grade Requirements & Gherkin AC</h2>
+    <p class="section-subtitle">Click to expand Jira user stories written in INVEST format with testable Gherkin acceptance criteria.</p>
+
+    <div class="story-card open">
+      <div class="story-header" onclick="toggleStory(this)">
+        <h3>📱 Feature 1: Offline Apple/Google Wallet Sync & Gate Updates</h3>
+        <span>▼</span>
+      </div>
+      <div class="story-body">
+        <p><strong>User Story:</strong> As a checked-in passenger, I want to add my boarding pass to Apple Wallet with 1 tap, so that I can access my pass at security terminals without internet.</p>
+        <div class="gherkin-box">
+<span class="gherkin-keyword">Scenario 1:</span> Successful Pass Generation & Apple Wallet Hand-off (iOS)<br>
+&nbsp;&nbsp;<span class="gherkin-keyword">Given</span> the passenger has successfully completed check-in for flight 1A-450<br>
+&nbsp;&nbsp;<span class="gherkin-keyword">And</span> the device operating system is iOS<br>
+&nbsp;&nbsp;<span class="gherkin-keyword">When</span> the passenger taps the "Add to Apple Wallet" button<br>
+&nbsp;&nbsp;<span class="gherkin-keyword">Then</span> the app generates a valid .pkpass binary payload<br>
+&nbsp;&nbsp;<span class="gherkin-keyword">And</span> opens native Apple Wallet pass sheet displaying Aztec barcode and gate details.
+        </div>
+      </div>
+    </div>
+
+    <div class="story-card">
+      <div class="story-header" onclick="toggleStory(this)">
+        <h3>🔄 Feature 2: Self-Service Flight Change Engine (MMB)</h3>
+        <span>▼</span>
+      </div>
+      <div class="story-body">
+        <p><strong>User Story:</strong> As a passenger with a confirmed PNR, I want to search alternative flights and view fare differences in Manage My Booking, so that I can modify travel dates instantly.</p>
+        <div class="gherkin-box">
+<span class="gherkin-keyword">Scenario 1:</span> Voluntary Flight Modification with Price Difference<br>
+&nbsp;&nbsp;<span class="gherkin-keyword">Given</span> the passenger retrieves a valid PNR eligible for modification<br>
+&nbsp;&nbsp;<span class="gherkin-keyword">When</span> the passenger selects a new departure date and picks flight 1A-890<br>
+&nbsp;&nbsp;<span class="gherkin-keyword">Then</span> the app queries the pricing engine: Total Due = (New Fare - Old Fare) + Change Fee<br>
+&nbsp;&nbsp;<span class="gherkin-keyword">And</span> enables the 3DS payment authorization flow.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Module 3: Live RICE Calculator -->
+  <section id="calculator" class="calculator-section container">
+    <h2 class="section-title">3. Interactive RICE Prioritization Calculator</h2>
+    <p class="section-subtitle">Adjust the sliders below to recalculate feature scores dynamically using the formula: (Reach × Impact × Confidence) / Effort.</p>
+
+    <div class="calc-container">
+      <div>
+        <div class="slider-group">
+          <div class="slider-label"><span>Reach (Monthly Active Passengers)</span><span id="reach-val">450,000</span></div>
+          <input type="range" class="slider-input" min="10000" max="500000" step="10000" value="450000" id="reach" oninput="calculateRICE()">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-label"><span>Impact (1 = Low, 2 = Medium, 3 = High)</span><span id="impact-val">3</span></div>
+          <input type="range" class="slider-input" min="1" max="3" step="0.5" value="3" id="impact" oninput="calculateRICE()">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-label"><span>Confidence (%)</span><span id="conf-val">90%</span></div>
+          <input type="range" class="slider-input" min="50" max="100" step="5" value="90" id="conf" oninput="calculateRICE()">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-label"><span>Effort (Person-Sprints)</span><span id="effort-val">2</span></div>
+          <input type="range" class="slider-input" min="1" max="6" step="1" value="2" id="effort" oninput="calculateRICE()">
+        </div>
+      </div>
+
+      <div class="score-box">
+        <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">DYNAMIC RICE SCORE</span>
+        <div class="score-number" id="rice-score">607,500</div>
+        <div class="priority-badge" id="priority-tag">RANK 1 (MUST HAVE)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Module 4: Mobile Release & App Store Operations -->
+  <section id="release" class="calculator-section container">
+    <h2 class="section-title">4. Mobile Release, QA Matrix & App Store Operations</h2>
+    <p class="section-subtitle">Simulate the 7-day phased rollout lifecycle, remote feature flag kill-switches, and device testing matrix.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
+      
+      <!-- 7-Day Phased Rollout Interactive Simulator -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(16px);">
+        <h3 style="font-size: 1.1rem; color: var(--accent-cyan); font-weight: 700; margin-bottom: 12px;">📅 7-Day Phased Rollout Simulator</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">Click rollout days to simulate production traffic distribution & risk monitoring:</p>
+        
+        <div style="display: flex; gap: 8px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 4px;">
+          <button class="tab-btn active" style="padding: 8px 14px; font-size: 0.8rem;" onclick="setRollout(1)">Day 1 (1%)</button>
+          <button class="tab-btn" style="padding: 8px 14px; font-size: 0.8rem;" onclick="setRollout(2)">Day 2 (2%)</button>
+          <button class="tab-btn" style="padding: 8px 14px; font-size: 0.8rem;" onclick="setRollout(3)">Day 3 (5%)</button>
+          <button class="tab-btn" style="padding: 8px 14px; font-size: 0.8rem;" onclick="setRollout(5)">Day 5 (20%)</button>
+          <button class="tab-btn" style="padding: 8px 14px; font-size: 0.8rem;" onclick="setRollout(7)">Day 7 (100%)</button>
+        </div>
+
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 16px;">
+          <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.9rem; margin-bottom: 8px;">
+            <span>Active Production Traffic:</span>
+            <span id="rollout-pct" style="color: var(--accent-emerald);">1% User Base</span>
+          </div>
+          <div style="background: rgba(255,255,255,0.1); height: 10px; border-radius: 5px; overflow: hidden; margin-bottom: 16px;">
+            <div id="rollout-bar" style="background: linear-gradient(90deg, var(--accent-blue), var(--accent-emerald)); height: 100%; width: 1%; transition: width 0.4s ease;"></div>
+          </div>
+          <div id="rollout-status" style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+            <strong>Monitoring Focus:</strong> Crashlytics session crashes, API middleware latency, and initial user feedback logs.
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Flag Remote Kill Switch -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(16px);">
+        <h3 style="font-size: 1.1rem; color: var(--accent-cyan); font-weight: 700; margin-bottom: 12px;">🛡️ Remote Feature Flag Safeguard</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">Simulate turning OFF a failing third-party ancillary API instantly in production without submitting a new app build:</p>
+
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <div>
+              <div style="font-weight: 700; font-size: 0.9rem;">Feature: 3rd-Party Travel Insurance</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Config: <code style="color: var(--accent-cyan);">enable_travel_insurance</code></div>
+            </div>
+            <label style="position: relative; display: inline-block; width: 44px; height: 24px;">
+              <input type="checkbox" id="flag-toggle" checked onchange="toggleFeatureFlag()" style="opacity: 0; width: 0; height: 0;">
+              <span id="slider-switch" style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--accent-emerald); transition: .3s; border-radius: 24px;"></span>
+            </label>
+          </div>
+          <div id="flag-status-box" style="font-size: 0.8rem; color: var(--accent-emerald); background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); padding: 8px 12px; border-radius: 8px;">
+            ● Feature ACTIVE in production checkout screen.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- pCloudy Device Matrix Grid -->
+    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(16px);">
+      <h3 style="font-size: 1.1rem; color: var(--accent-cyan); font-weight: 700; margin-bottom: 16px;">📱 Physical Device Testing Coverage (pCloudy Platform)</h3>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; font-size: 0.8rem;">
+        <div style="background: rgba(15,23,42,0.6); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+          <div style="font-weight: 700; color: #FFF;">iPhone 15 Pro</div>
+          <div style="color: var(--text-muted);">iOS 18.0 • Dynamic Island</div>
+          <div style="color: var(--accent-emerald); font-weight: 600; margin-top: 4px;">✓ Passed QA</div>
+        </div>
+        <div style="background: rgba(15,23,42,0.6); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+          <div style="font-weight: 700; color: #FFF;">Samsung Galaxy S24</div>
+          <div style="color: var(--text-muted);">Android 14 • OneUI</div>
+          <div style="color: var(--accent-emerald); font-weight: 600; margin-top: 4px;">✓ Passed QA</div>
+        </div>
+        <div style="background: rgba(15,23,42,0.6); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+          <div style="font-weight: 700; color: #FFF;">Google Pixel 8</div>
+          <div style="color: var(--text-muted);">Android 15 • Stock UI</div>
+          <div style="color: var(--accent-emerald); font-weight: 600; margin-top: 4px;">✓ Passed QA</div>
+        </div>
+        <div style="background: rgba(15,23,42,0.6); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+          <div style="font-weight: 700; color: #FFF;">iPhone SE (3rd Gen)</div>
+          <div style="color: var(--text-muted);">iOS 16.5 • Touch ID</div>
+          <div style="color: var(--accent-emerald); font-weight: 600; margin-top: 4px;">✓ Passed QA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Module 5: Observability & Feature Success Math Engine -->
+  <section id="observability" class="calculator-section container">
+    <h2 class="section-title">5. Product Observability & Feature Success Math Engine</h2>
+    <p class="section-subtitle">Real-time observability telemetry monitoring and dynamic mathematical calculation of commercial and operational ROI.</p>
+
+    <!-- Observability Telemetry Cards -->
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px;">
+      
+      <div style="background: var(--bg-card); border: 1px solid var(--accent-emerald); border-radius: 12px; padding: 20px; backdrop-filter: blur(16px);">
+        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">STABILITY TELEMETRY</div>
+        <div style="font-size: 1.8rem; font-weight: 800; color: var(--accent-emerald); margin: 6px 0;">99.62%</div>
+        <div style="font-size: 0.8rem; color: #CBD5E1;">Crash-Free Sessions (Firebase)</div>
+      </div>
+
+      <div style="background: var(--bg-card); border: 1px solid var(--accent-cyan); border-radius: 12px; padding: 20px; backdrop-filter: blur(16px);">
+        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">APM NETWORK LATENCY</div>
+        <div style="font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan); margin: 6px 0;">640 ms</div>
+        <div style="font-size: 0.8rem; color: #CBD5E1;">P95 Gateway Response (Datadog)</div>
+      </div>
+
+      <div style="background: var(--bg-card); border: 1px solid var(--accent-indigo); border-radius: 12px; padding: 20px; backdrop-filter: blur(16px);">
+        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">UX FRICTION INDEX</div>
+        <div style="font-size: 1.8rem; font-weight: 800; color: var(--accent-indigo); margin: 6px 0;">1.2 / 10</div>
+        <div style="font-size: 0.8rem; color: #CBD5E1;">Rage-Click Score (Quantum Metric)</div>
+      </div>
+
+      <div style="background: var(--bg-card); border: 1px solid var(--accent-amber); border-radius: 12px; padding: 20px; backdrop-filter: blur(16px);">
+        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">FUNNEL DROP-OFF</div>
+        <div style="font-size: 1.8rem; font-weight: 800; color: var(--accent-amber); margin: 6px 0;">3.8%</div>
+        <div style="font-size: 0.8rem; color: #CBD5E1;">Checkout Abandonment Rate</div>
+      </div>
+
+    </div>
+
+    <!-- Live Feature Success ROI Math Calculator -->
+    <div class="calc-container" style="border-color: var(--accent-emerald);">
+      <div>
+        <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--accent-emerald); margin-bottom: 16px;">📈 Live Feature Success & ROI Calculator</h3>
+        
+        <div class="slider-group">
+          <div class="slider-label"><span>Monthly Active Passengers</span><span id="roi-users-val">450,000</span></div>
+          <input type="range" class="slider-input" min="50000" max="1000000" step="50000" value="450000" id="roi-users" oninput="calculateROIMath()">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-label"><span>Ancillary Attach Uplift (%)</span><span id="roi-uplift-val">5.0%</span></div>
+          <input type="range" class="slider-input" min="1" max="15" step="0.5" value="5.0" id="roi-uplift" oninput="calculateROIMath()">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-label"><span>Average Ancillary Price ($)</span><span id="roi-price-val">$35</span></div>
+          <input type="range" class="slider-input" min="10" max="100" step="5" value="35" id="roi-price" oninput="calculateROIMath()">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-label"><span>Mobile SSCI Check-In Shift (%)</span><span id="roi-ssci-val">15.0%</span></div>
+          <input type="range" class="slider-input" min="5" max="40" step="2.5" value="15.0" id="roi-ssci" oninput="calculateROIMath()">
+        </div>
+      </div>
+
+      <div class="score-box" style="border-color: var(--accent-emerald); background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(15,23,42,0.9));">
+        <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">MONTHLY REVENUE UPLIFT</span>
+        <div class="score-number" id="roi-rev-out" style="color: var(--accent-emerald); font-size: 2.2rem;">+$787,500</div>
+        
+        <div style="border-top: 1px solid var(--border-color); margin: 16px 0; width: 100%;"></div>
+
+        <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">ANNUAL DESK SAVINGS</span>
+        <div class="score-number" id="roi-savings-out" style="color: var(--accent-cyan); font-size: 2.0rem;">$283,500</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Candidate Contact & Connection Section -->
+  <section id="contact" class="calculator-section container">
+    <div style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(56, 189, 248, 0.1)); border: 1px solid var(--accent-cyan); border-radius: var(--radius-lg); padding: 40px; text-align: center; backdrop-filter: blur(16px); box-shadow: var(--glass-shadow);">
+      <h2 style="font-size: 2.0rem; font-weight: 800; color: #FFF; margin-bottom: 8px;">Let's Connect & Discuss Product Ownership</h2>
+      <p style="font-size: 1.0rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 32px;">
+        Available for Product Owner – Mobile Services & Customer Experience roles. Reach out directly via Email, LinkedIn, or Phone:
+      </p>
+
+      <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; max-width: 900px; margin: 0 auto 24px;">
+        
+        <!-- Phone Call Button -->
+        <a href="tel:+918709019736" style="display: flex; align-items: center; gap: 10px; background: rgba(16, 185, 129, 0.9); border: 1px solid var(--accent-emerald); padding: 12px 24px; border-radius: 30px; color: #FFF; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: transform 0.2s;">
+          <span>📞</span> +91-8709019736
+        </a>
+
+        <!-- Email Button -->
+        <a href="mailto:indranikar30@gmail.com" style="display: flex; align-items: center; gap: 10px; background: rgba(30, 41, 59, 0.9); border: 1px solid var(--border-highlight); padding: 12px 24px; border-radius: 30px; color: #FFF; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: transform 0.2s;">
+          <span>✉️</span> indranikar30@gmail.com
+        </a>
+
+        <!-- LinkedIn Button -->
+        <a href="https://linkedin.com/in/indranikar3" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 10px; background: rgba(37, 99, 235, 0.9); border: 1px solid var(--accent-blue); padding: 12px 24px; border-radius: 30px; color: #FFF; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: transform 0.2s;">
+          <span>💼</span> linkedin.com/in/indranikar3
+        </a>
+
+        <!-- Location Badge -->
+        <div style="display: flex; align-items: center; gap: 8px; background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); padding: 12px 20px; border-radius: 30px; color: var(--text-muted); font-weight: 500; font-size: 0.9rem;">
+          <span>📍</span> Bengaluru, India
+        </div>
+
+      </div>
+
+      <div style="font-size: 0.85rem; color: var(--accent-cyan); font-weight: 600;">
+        B.E. CS • MBA Marketing • 3+ YOE High-Value Account & Servicing Ownership
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Indrani Kar | Executive Product Owner Candidate Portfolio</p>
+      <p style="margin-top: 6px;">Built with Vanilla HTML5/CSS3/JS • Zero External Dependencies • Optimized for Vercel & GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script>
+    // Stage Switcher Logic
+    const stages = {
+      1: {
+        title: "Stage 1: Shop & Book (Inspiration to Payment)",
+        desc: "Passengers search flights, compare Fare Families (Flex vs Light), select paid seats/bags, and complete 3D Secure (3DS) payment authentication.",
+        friction: "Static ancillary lists during checkout cause drop-off and miss high-margin ancillary upsell opportunities.",
+        solution: "Interactive 3D seat map with dynamic pricing tiers + 1-tap Apple Pay integration to boost conversion by 18%.",
+        screenHTML: `
+          <div class="app-header-ui"><span class="airline-logo-text">GLOBAL AIRLINES</span><span>✈️</span></div>
+          <div class="flight-card-ui"><div class="flight-route"><span>BLR</span> ➔ <span>LHR</span></div><div style="color: var(--text-muted); font-size: 0.75rem;">Flight 1A-450 • Economy Flex</div></div>
+          <div style="background: rgba(37,99,235,0.2); border: 1px dashed var(--accent-cyan); border-radius: 10px; padding: 12px; margin-top: 10px;">
+            <div style="font-weight: 700; color: var(--accent-cyan);">Extra Legroom Seat</div>
+            <div style="font-size: 0.75rem; color: #94A3B8;">Select Seat 12A (+$35.00)</div>
+          </div>
+          <div style="margin-top: auto; background: var(--accent-blue); padding: 10px; text-align: center; border-radius: 10px; font-weight: 700;">Pay with Apple Pay</div>
+        `
+      },
+      2: {
+        title: "Stage 2: Manage My Booking (MMB)",
+        desc: "Passengers retrieve bookings via PNR + Last Name, modify flight dates, select special meals (VGML), or upgrade seats.",
+        friction: "Complex multi-step flight change flow with opaque fare difference calculations leads to high call-center volume.",
+        solution: "Self-service voluntary flight change engine with line-item price breakdown (New Fare - Old Fare + Penalty).",
+        screenHTML: `
+          <div class="app-header-ui"><span class="airline-logo-text">MANAGE TRIP</span><span>🎫</span></div>
+          <div style="font-weight:700; color:var(--accent-cyan); margin-bottom:8px;">PNR: X7K9PQ</div>
+          <div class="flight-card-ui">
+            <div style="font-weight:700;">Change Flight Date</div>
+            <div style="font-size:0.75rem; color:var(--accent-emerald);">Flex Ticket (Zero Change Fee)</div>
+          </div>
+          <div style="background:rgba(16,185,129,0.1); border:1px solid var(--accent-emerald); border-radius:10px; padding:12px; margin-top:10px;">
+            <div style="display:flex; justify-content:space-between; font-weight:700;"><span>Total Fare Difference:</span><span>$0.00</span></div>
+          </div>
+          <div style="margin-top: auto; background: var(--accent-emerald); color:#000; padding: 10px; text-align: center; border-radius: 10px; font-weight: 700;">Confirm Change</div>
+        `
+      },
+      3: {
+        title: "Stage 3: Self-Service Check-In (SSCI)",
+        desc: "Check-in window opens at T-24h. Passengers scan passport OCR/NFC, confirm seat, and export digital boarding pass.",
+        friction: "Passengers lose access to boarding passes when entering airport basements without cellular connectivity.",
+        solution: "1-Tap Apple Wallet (.pkpass) & Google Wallet export + SQLite local encrypted pass caching.",
+        screenHTML: `
+          <div class="app-header-ui"><span class="airline-logo-text">BOARDING PASS</span><span>📲</span></div>
+          <div class="wallet-pass-ui">
+            <div style="font-size:0.7rem; letter-spacing:1px; text-transform:uppercase;">BOARDING PASS</div>
+            <div style="font-weight:800; font-size:1.1rem; margin:4px 0;">INDRANI KAR</div>
+            <div style="display:flex; justify-content:space-between; font-size:0.8rem; margin-top:8px;"><span>SEAT: 12A</span><span>GATE: B4</span></div>
+            <div class="barcode-placeholder">||| | |||| ||| ||||</div>
+          </div>
+          <div style="margin-top: auto; background: #000; border:1px solid #FFF; padding: 10px; text-align: center; border-radius: 10px; font-weight: 700;">Add to Apple Wallet</div>
+        `
+      },
+      4: {
+        title: "Stage 4: Day of Travel & Airport Ops",
+        desc: "Real-time updates delivered via APNS push alerts for gate changes, boarding calls, and baggage carousel tracking.",
+        friction: "Gate changes published over airport loudspeakers are frequently missed by passengers, causing flight delays.",
+        solution: "Real-time DCS operational event listener pushing instant lock-screen notifications with 1-tap map navigation.",
+        screenHTML: `
+          <div style="margin-top:40px;" class="push-notification-ui">
+            <div style="display:flex; justify-content:space-between; font-size:0.7rem; color:var(--text-muted); margin-bottom:4px;">
+              <span>AIRLINE ALERT</span><span>NOW</span>
+            </div>
+            <div style="font-weight:700; color:#FFF; font-size:0.85rem;">⚠️ Gate Change Alert</div>
+            <div style="font-size:0.75rem; color:#CBD5E1; margin-top:2px;">Flight 1A-450 to Paris will now depart from Gate C12.</div>
+          </div>
+        `
+      }
+    };
+
+    function switchStage(stageNum) {
+      document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx === stageNum - 1);
+      });
+      const data = stages[stageNum];
+      document.getElementById('stage-title').innerText = data.title;
+      document.getElementById('stage-desc').innerText = data.desc;
+      document.getElementById('stage-friction').innerText = data.friction;
+      document.getElementById('stage-solution').innerText = data.solution;
+      document.getElementById('phone-screen').innerHTML = data.screenHTML;
+    }
+
+    // Toggle User Stories Accordion
+    function toggleStory(header) {
+      const card = header.parentElement;
+      card.classList.toggle('open');
+    }
+
+    // RICE Calculation
+    function calculateRICE() {
+      const reach = parseFloat(document.getElementById('reach').value);
+      const impact = parseFloat(document.getElementById('impact').value);
+      const conf = parseFloat(document.getElementById('conf').value) / 100;
+      const effort = parseFloat(document.getElementById('effort').value);
+
+      document.getElementById('reach-val').innerText = reach.toLocaleString();
+      document.getElementById('impact-val').innerText = impact;
+      document.getElementById('conf-val').innerText = (conf * 100) + '%';
+      document.getElementById('effort-val').innerText = effort;
+
+      const score = Math.round((reach * impact * conf) / effort);
+      document.getElementById('rice-score').innerText = score.toLocaleString();
+
+      const badge = document.getElementById('priority-tag');
+      if (score >= 300000) {
+        badge.innerText = "RANK 1 (MUST HAVE)";
+        badge.style.background = "var(--accent-emerald)";
+      } else if (score >= 100000) {
+        badge.innerText = "RANK 2 (SHOULD HAVE)";
+        badge.style.background = "var(--accent-cyan)";
+      } else {
+        badge.innerText = "DEFERRED (COULD HAVE)";
+        badge.style.background = "var(--accent-amber)";
+      }
+    }
+
+    // Rollout Simulator Logic
+    const rolloutData = {
+      1: { pct: "1%", width: "1%", desc: "<strong>Day 1 (1% Traffic):</strong> Monitoring Firebase Crashlytics for low-level device crashes, API middleware latency, and initial server error logs." },
+      2: { pct: "2%", width: "2%", desc: "<strong>Day 2 (2% Traffic):</strong> Verifying PSS booking engine query response times and memory footprints across iOS and Android." },
+      3: { pct: "3%", width: "5%", desc: "<strong>Day 3 (5% Traffic):</strong> Analyzing 3DS payment gateway authorization success rate and initial customer review feedback." },
+      5: { pct: "20%", width: "20%", desc: "<strong>Day 5 (20% Traffic):</strong> Scaling active user load; monitoring ancillary attach rates and Quantum Metric checkout drop-offs." },
+      7: { pct: "100%", width: "100%", desc: "<strong>Day 7 (100% Full Rollout):</strong> Complete global release accomplished with zero unexpected downtime or crash regressions." }
+    };
+
+    function setRollout(day) {
+      const data = rolloutData[day];
+      document.getElementById('rollout-pct').innerText = data.pct + " User Base";
+      document.getElementById('rollout-bar').style.width = data.width;
+      document.getElementById('rollout-status').innerHTML = data.desc;
+    }
+
+    // Feature Flag Toggle Logic
+    function toggleFeatureFlag() {
+      const isChecked = document.getElementById('flag-toggle').checked;
+      const statusBox = document.getElementById('flag-status-box');
+      const switchSpan = document.getElementById('slider-switch');
+
+      if (isChecked) {
+        switchSpan.style.backgroundColor = "var(--accent-emerald)";
+        statusBox.style.color = "var(--accent-emerald)";
+        statusBox.style.background = "rgba(16,185,129,0.1)";
+        statusBox.style.borderColor = "rgba(16,185,129,0.3)";
+        statusBox.innerText = "● Feature ACTIVE in production checkout screen.";
+      } else {
+        switchSpan.style.backgroundColor = "var(--accent-rose)";
+        statusBox.style.color = "var(--accent-rose)";
+        statusBox.style.background = "rgba(244,63,94,0.1)";
+        statusBox.style.borderColor = "rgba(244,63,94,0.3)";
+        statusBox.innerText = "⛔ KILL SWITCH ACTIVATED: Feature instantly hidden worldwide without App Store submission!";
+      }
+    }
+
+    // Live Feature Success ROI Math Calculator
+    function calculateROIMath() {
+      const users = parseFloat(document.getElementById('roi-users').value);
+      const uplift = parseFloat(document.getElementById('roi-uplift').value);
+      const price = parseFloat(document.getElementById('roi-price').value);
+      const ssciShift = parseFloat(document.getElementById('roi-ssci').value);
+
+      document.getElementById('roi-users-val').innerText = users.toLocaleString();
+      document.getElementById('roi-uplift-val').innerText = uplift.toFixed(1) + '%';
+      document.getElementById('roi-price-val').innerText = '$' + price;
+      document.getElementById('roi-ssci-val').innerText = ssciShift.toFixed(1) + '%';
+
+      // Monthly Revenue Boost = Searchers * Uplift % * Price
+      const monthlyRev = Math.round(users * (uplift / 100) * price);
+      document.getElementById('roi-rev-out').innerText = '+$' + monthlyRev.toLocaleString();
+
+      // Annual Desk Cost Savings = Users * 12 * (SSCI Shift %) * $3.50 Desk Cost
+      const deskSavings = Math.round(users * (ssciShift / 100) * 4.20);
+      document.getElementById('roi-savings-out').innerText = '$' + deskSavings.toLocaleString();
+    }
+  </script>
+</body>
+</html>
