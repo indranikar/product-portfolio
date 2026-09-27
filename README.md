@@ -1,4 +1,4 @@
-# Indrani Kar | Product Owner & Strategy Master Portfolio
+# Indrani Kar | Executive Product Portfolio
 
 > **Candidate:** Indrani Kar (B.E. Computer Science + MBA Marketing)  
 > **Master Portfolio Hub:** [indranikar.github.io/product-portfolio](https://indranikar.github.io/product-portfolio/)
@@ -7,7 +7,7 @@
 
 ## 📌 Master Portfolio Structure
 
-This repository serves as the central hub for all Product Owner case studies, technical PRDs, and interactive product showcases.
+This repository serves as the central hub for all product case studies, technical PRDs, and interactive product showcases.
 
 ```
 product-portfolio/
