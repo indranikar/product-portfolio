@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartRoute AI & Assist | Real-Time AI Bus Disruption Management & Proactive Assistance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #070A12;
+      --bg-card: rgba(15, 23, 42, 0.85);
+      --bg-card-sub: rgba(30, 41, 59, 0.6);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(245, 158, 11, 0.4);
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --accent-orange: #F59E0B;
+      --accent-amber: #D97706;
+      --accent-blue: #3B82F6;
+      --accent-cyan: #38BDF8;
+      --accent-emerald: #10B981;
+      --accent-indigo: #6366F1;
+      --accent-rose: #F43F5E;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(245, 158, 11, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 90% 60%, rgba(59, 130, 246, 0.12) 0%, transparent 45%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    code, pre { font-family: 'JetBrains Mono', monospace; }
+
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    /* Sticky Navigation Header */
+    header {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(16px);
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(7, 10, 18, 0.9);
+    }
+    .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+    .brand-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-orange), var(--accent-blue));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1rem; color: #FFF;
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+    }
+    .brand-text h1 { font-size: 1.05rem; font-weight: 800; }
+    .brand-text p { font-size: 0.75rem; color: var(--accent-orange); font-weight: 600; }
+
+    .nav-links { display: flex; gap: 18px; align-items: center; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent-orange); }
+    .btn-hub {
+      background: rgba(245, 158, 11, 0.15); border: 1px solid var(--accent-orange);
+      color: var(--accent-orange); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .btn-hub:hover { background: var(--accent-orange); color: #000; }
+
+    /* Hero Section */
+    .hero { padding: 48px 0 32px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(245, 158, 11, 0.15); border: 1px solid var(--accent-orange);
+      color: var(--accent-orange); font-size: 0.75rem; font-weight: 700; padding: 4px 14px;
+      border-radius: 20px; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .hero-title {
+      font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 14px; line-height: 1.25;
+      background: linear-gradient(180deg, #FFFFFF 0%, #CBD5E1 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle { font-size: 1.08rem; color: var(--text-muted); max-width: 860px; margin-bottom: 28px; line-height: 1.6; }
+
+    /* Key Executive Metrics Grid */
+    .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px; }
+    .metric-card {
+      background: var(--bg-card); border: 1px solid var(--border-color); padding: 20px;
+      border-radius: var(--radius-md); backdrop-filter: blur(12px); position: relative; overflow: hidden;
+    }
+    .metric-card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--accent-orange), var(--accent-blue));
+    }
+    .metric-val { font-size: 1.8rem; font-weight: 800; color: var(--accent-emerald); margin-bottom: 4px; }
+    .metric-val.orange { color: var(--accent-orange); }
+    .metric-val.cyan { color: var(--accent-cyan); }
+    .metric-val.indigo { color: var(--accent-indigo); }
+    .metric-label { font-size: 0.85rem; font-weight: 700; color: #FFF; margin-bottom: 2px; }
+    .metric-sub { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* Vertical Flow Layout - Card Sections */
+    .section-block {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 32px; margin-bottom: 40px;
+      backdrop-filter: blur(12px);
+    }
+    .section-header { margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; }
+    .section-tag { font-size: 0.75rem; font-weight: 700; color: var(--accent-orange); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; display: block; }
+    .section-title { font-size: 1.45rem; font-weight: 800; color: #FFF; display: flex; align-items: center; gap: 10px; }
+    .section-desc { font-size: 0.92rem; color: var(--text-muted); margin-top: 6px; }
+
+    /* Overview Content Cards */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .info-box { background: var(--bg-card-sub); border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); }
+    .info-box h4 { font-size: 0.95rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 8px; }
+    .info-box ul { padding-left: 18px; font-size: 0.88rem; color: var(--text-muted); }
+    .info-box li { margin-bottom: 6px; }
+
+    /* Interactive Disruption Simulator */
+    .sim-vertical-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: start; }
+    .sim-buttons { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+    .sim-btn {
+      background: rgba(30, 41, 59, 0.8); border: 1px solid var(--border-color);
+      color: #F8FAFC; padding: 14px 18px; border-radius: var(--radius-md); font-weight: 600;
+      font-size: 0.88rem; text-align: left; cursor: pointer; transition: all 0.2s; display: flex; justify-content: space-between; align-items: center;
+    }
+    .sim-btn:hover { border-color: var(--accent-orange); background: rgba(245, 158, 11, 0.1); }
+    .sim-btn.active { border-color: var(--accent-orange); background: rgba(245, 158, 11, 0.18); box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); }
+    .sim-btn span.badge-num { background: var(--accent-orange); color: #000; font-size: 0.72rem; padding: 2px 8px; border-radius: 12px; font-weight: 800; }
+
+    .telemetry-log {
+      background: #090D16; border: 1px solid var(--border-color); padding: 16px;
+      border-radius: var(--radius-md); font-size: 0.82rem; font-family: 'JetBrains Mono', monospace;
+    }
+    .telemetry-log .title { color: var(--accent-cyan); font-weight: 700; margin-bottom: 6px; }
+    .telemetry-log .body { color: var(--accent-emerald); word-break: break-word; }
+
+    /* Phone Simulator UI */
+    .phone-mockup {
+      background: #0B0E14; border: 4px solid #1E293B; border-radius: 24px;
+      padding: 18px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8); min-height: 480px; display: flex; flex-direction: column;
+    }
+    .phone-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-bottom: 10px; border-bottom: 1px solid #1E293B; margin-bottom: 14px;
+      font-size: 0.78rem; color: var(--text-muted); font-weight: 600;
+    }
+    .chat-bubble {
+      background: #1E293B; border: 1px solid var(--border-color); border-radius: 12px;
+      padding: 14px; margin-bottom: 12px; font-size: 0.85rem; line-height: 1.45;
+    }
+    .chat-bubble.bot { border-left: 4px solid var(--accent-orange); }
+    .chat-bubble.user { background: #1E3A8A; border-right: 4px solid var(--accent-blue); align-self: flex-end; }
+    .action-group { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+    .btn-action {
+      background: linear-gradient(135deg, var(--accent-orange), var(--accent-amber));
+      border: none; color: #000; padding: 10px 14px; border-radius: 8px; font-weight: 800;
+      font-size: 0.82rem; cursor: pointer; text-align: center; transition: all 0.2s;
+    }
+    .btn-action:hover { transform: translateY(-1px); filter: brightness(1.1); }
+    .btn-action.sec { background: #334155; color: #F8FAFC; }
+
+    /* RICE Table Styling */
+    .rice-table-wrapper { width: 100%; overflow-x: auto; margin-bottom: 24px; }
+    .rice-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .rice-table th, .rice-table td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border-color); }
+    .rice-table th { background: rgba(255,255,255,0.03); color: var(--text-muted); font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+    .rice-score { font-weight: 800; color: var(--accent-orange); font-size: 1.05rem; }
+    .badge-scope { padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
+    .scope-m { background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald); border: 1px solid var(--accent-emerald); }
+    .scope-s { background: rgba(56, 189, 248, 0.2); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
+    .scope-c { background: rgba(245, 158, 11, 0.2); color: var(--accent-orange); border: 1px solid var(--accent-orange); }
+
+    /* Interactive RICE Calculator Tool */
+    .rice-calc-box {
+      background: var(--bg-card-sub); border: 1px solid var(--border-highlight);
+      padding: 24px; border-radius: var(--radius-md); margin-top: 20px;
+    }
+    .calc-grid { display: grid; grid-template-columns: repeat(4, 1fr) 1fr; gap: 16px; align-items: center; }
+    .calc-field label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; }
+    .calc-field input, .calc-field select {
+      width: 100%; background: #0F172A; border: 1px solid var(--border-color);
+      color: #FFF; padding: 8px 12px; border-radius: 6px; font-size: 0.88rem; font-weight: 600;
+    }
+    .calc-result {
+      background: rgba(245, 158, 11, 0.15); border: 1px solid var(--accent-orange);
+      padding: 12px; border-radius: var(--radius-sm); text-align: center;
+    }
+    .calc-result-val { font-size: 1.4rem; font-weight: 800; color: var(--accent-orange); }
+    .calc-result-lbl { font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+
+    /* Gherkin Code Block */
+    .gherkin-container {
+      background: #090D16; border: 1px solid #1E293B; border-radius: var(--radius-md);
+      padding: 20px; font-size: 0.86rem; line-height: 1.7; overflow-x: auto;
+    }
+    .kw-feat { color: #F43F5E; font-weight: 800; }
+    .kw-scen { color: #38BDF8; font-weight: 800; }
+    .kw-step { color: #F59E0B; font-weight: 800; }
+    .kw-str { color: #10B981; }
+
+    /* CX Analytics Cards */
+    .cx-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 16px; }
+    .cx-box { background: var(--bg-card-sub); border: 1px solid var(--border-color); padding: 18px; border-radius: var(--radius-md); }
+    .cx-title { font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; }
+    .cx-val { font-size: 1.6rem; font-weight: 800; color: var(--accent-cyan); }
+    .cx-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 6px; }
+
+    /* Architecture Flow Diagram */
+    .arch-flow {
+      background: #090D16; border: 1px solid var(--border-color); padding: 24px;
+      border-radius: var(--radius-md); font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;
+      line-height: 1.8; color: #A7F3D0; overflow-x: auto;
+    }
+
+    footer { border-top: 1px solid var(--border-color); padding: 32px 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 40px; }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Navigation Header -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="../index.html" class="brand">
+        <div class="brand-avatar">IK</div>
+        <div class="brand-text">
+          <h1>INDRANI KAR</h1>
+          <p>Product Manager Portfolio Case Study</p>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#simulator">Live Simulator</a>
+        <a href="#rice">RICE Framework</a>
+        <a href="#gherkin">Gherkin PRD</a>
+        <a href="#metrics">CSAT & NPS</a>
+        <a href="../index.html" class="btn-hub">← Main Portfolio Hub</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero container" id="overview">
+    <span class="badge">Ground Transport PM Portfolio Case Study</span>
+    <h1 class="hero-title">SmartRoute AI & Assist: Real-Time AI Bus Disruption Management & Proactive Customer Assistance</h1>
+    <p class="hero-subtitle">
+      A 0-to-1 Product Requirements Document (PRD), Telemetry Anomaly Framework, RICE Prioritization Model, Gherkin BDD Specs, and Interactive Simulator designed to automate intercity bus travel recovery, deflect support costs, and maximize passenger retention across Tier 1, 2, and 3 corridors.
+    </p>
+
+    <!-- Key Executive Metrics Grid -->
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-val">-35%</div>
+        <div class="metric-label">Support Ticket Volume</div>
+        <div class="metric-sub">Deflected via AI & Proactive Messaging</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val orange">+24 pts</div>
+        <div class="metric-label">Net Promoter Score (NPS)</div>
+        <div class="metric-sub">Uplift on delayed passenger routes</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val cyan">4.8 / 5.0</div>
+        <div class="metric-label">CSAT Resolution Score</div>
+        <div class="metric-sub">Post-resolution micro-survey rating</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val indigo">+18%</div>
+        <div class="metric-label">30-Day Repeat Retention</div>
+        <div class="metric-sub">For passengers experiencing delays</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Vertical Flow Content -->
+  <main class="container">
+
+    <!-- SECTION 1: OVERVIEW & CONTEXT -->
+    <section class="section-block">
+      <div class="section-header">
+        <span class="section-tag">Section 01</span>
+        <h2 class="section-title">💡 Problem Context & Product Strategy</h2>
+      </div>
+
+      <div class="grid-2">
+        <div class="info-box">
+          <h4>🔴 The Traveler & Business Friction</h4>
+          <ul>
+            <li><strong>Frequent Bus Delays:</strong> Private intercity buses encounter traffic jams, highway toll queues, and breakdown issues without real-time passenger updates.</li>
+            <li><strong>Unannounced Boarding Point Shifts:</strong> Bus operators frequently change pickup points to avoid city congestion, stranding passengers.</li>
+            <li><strong>High Support Operational Costs:</strong> Inbound calls to support cost ₹45+ per ticket, creating heavy operational margin drag.</li>
+            <li><strong>Passenger Attrition:</strong> Passengers who experience unassisted delays have a 40% lower repeat booking rate.</li>
+          </ul>
+        </div>
+        <div class="info-box">
+          <h4>🟢 The Product Solution (SmartRoute AI & Assist)</h4>
+          <ul>
+            <li><strong>Predictive Anomaly Engine:</strong> ML model analyzing GPS telemetry & historical route speeds to detect delays up to 2 hours in advance.</li>
+            <li><strong>Proactive Multichannel Messaging:</strong> Automated WhatsApp & Push alerts dispatched <em>before</em> passengers leave for the bus stand.</li>
+            <li><strong>1-Tap Automated Recovery:</strong> Free Express Cab dispatch for boarding shifts, instant ₹150 Wallet Snack Credit for >45m delays, and 0-fee rebooking.</li>
+            <li><strong>Event-Driven Deflection Bot:</strong> Resolves 90% of location/ETA queries without human agent escalation.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: INTERACTIVE DISRUPTION SIMULATOR -->
+    <section class="section-block" id="simulator">
+      <div class="section-header">
+        <span class="section-tag">Section 02</span>
+        <h2 class="section-title">🎮 Interactive Bus Disruption & Recovery Simulator</h2>
+      </div>
+
+      <div class="sim-vertical-grid">
+        <!-- Control Panel -->
+        <div>
+          <h4 style="margin-bottom: 12px; color: var(--accent-orange); font-size: 0.95rem;">Select Disruption Scenario:</h4>
+          
+          <div class="sim-buttons">
+            <button id="btn-scen-1" class="sim-btn active" onclick="runScenario('delay_45', this)">
+              <span>Scenario 1: Bus Delayed by 45 Mins (Traffic)</span>
+              <span class="badge-num">SCENARIO 1</span>
+            </button>
+            <button id="btn-scen-2" class="sim-btn" onclick="runScenario('boarding_shift', this)">
+              <span>Scenario 2: Boarding Point Shifted by 3.2 KM</span>
+              <span class="badge-num">SCENARIO 2</span>
+            </button>
+            <button id="btn-scen-3" class="sim-btn" onclick="runScenario('breakdown', this)">
+              <span>Scenario 3: Major Breakdown (Rebooking Needed)</span>
+              <span class="badge-num">SCENARIO 3</span>
+            </button>
+            <button id="btn-scen-4" class="sim-btn" onclick="runScenario('gps_loss', this)">
+              <span>Scenario 4: GPS Telemetry Lost (Edge Case)</span>
+              <span class="badge-num">EDGE CASE</span>
+            </button>
+          </div>
+
+          <div class="telemetry-log">
+            <div class="title">> Backend Event Stream & Telemetry Log:</div>
+            <div id="sim-log-text" class="body">
+              > Ingesting GPS pings: Bus #KA-01-F-8890 on Bangalore -> Mysore route. Velocity anomaly (+48m delay). Triggering Proactive Alert.
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone UI Mockup -->
+        <div class="phone-mockup">
+          <div class="phone-header">
+            <span>9:41 AM</span>
+            <span>SmartRoute AI Assist</span>
+            <span>100% 🔋</span>
+          </div>
+
+          <div id="chat-box" style="display:flex; flex-direction:column; flex-grow:1; overflow-y:auto;">
+            <div class="chat-bubble bot">
+              👋 Hi Indrani! Your trip on <strong>KSRTC Swift (Bangalore → Mysore)</strong> is scheduled for 8:00 PM tonight. Tracking is active.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: RICE & MOSCOW PRIORITIZATION -->
+    <section class="section-block" id="rice">
+      <div class="section-header">
+        <span class="section-tag">Section 03</span>
+        <h2 class="section-title">📊 RICE Prioritization Framework & MoSCoW Scoping</h2>
+      </div>
+
+      <div class="rice-table-wrapper">
+        <table class="rice-table">
+          <thead>
+            <tr>
+              <th>Feature Candidate</th>
+              <th>Category</th>
+              <th>Reach (Users/mo)</th>
+              <th>Impact (1-3)</th>
+              <th>Confidence (%)</th>
+              <th>Effort (wks)</th>
+              <th>RICE Score</th>
+              <th>MoSCoW Scope</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Proactive Delay Alert (WhatsApp + Push)</strong></td>
+              <td>Automation</td>
+              <td>500,000</td>
+              <td>3.0 (High)</td>
+              <td>100%</td>
+              <td>2 wks</td>
+              <td class="rice-score">750,000</td>
+              <td><span class="badge-scope scope-m">MUST HAVE</span></td>
+            </tr>
+            <tr>
+              <td><strong>1-Tap Free Express Cab Boarding Rerouting</strong></td>
+              <td>Recovery</td>
+              <td>120,000</td>
+              <td>3.0 (High)</td>
+              <td>90%</td>
+              <td>3 wks</td>
+              <td class="rice-score">108,000</td>
+              <td><span class="badge-scope scope-m">MUST HAVE</span></td>
+            </tr>
+            <tr>
+              <td><strong>Instant Wallet Snack Credit (>45m delay)</strong></td>
+              <td>Passenger CSAT</td>
+              <td>200,000</td>
+              <td>2.0 (Med)</td>
+              <td>95%</td>
+              <td>1 wk</td>
+              <td class="rice-score">380,000</td>
+              <td><span class="badge-scope scope-m">MUST HAVE</span></td>
+            </tr>
+            <tr>
+              <td><strong>AI Conductor Call & IVR Telemetry Ping</strong></td>
+              <td>Conversational</td>
+              <td>150,000</td>
+              <td>2.0 (Med)</td>
+              <td>80%</td>
+              <td>4 wks</td>
+              <td class="rice-score">60,000</td>
+              <td><span class="badge-scope scope-s">SHOULD HAVE</span></td>
+            </tr>
+            <tr>
+              <td><strong>AR Boarding Point Navigation Radar</strong></td>
+              <td>Wayfinding</td>
+              <td>40,000</td>
+              <td>1.0 (Low)</td>
+              <td>60%</td>
+              <td>5 wks</td>
+              <td class="rice-score">4,800</td>
+              <td><span class="badge-scope scope-c">COULD HAVE</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Interactive RICE Calculator Tool -->
+      <div class="rice-calc-box">
+        <h4 style="margin-bottom: 12px; color: var(--accent-orange);">🧮 Interactive RICE Score Calculator</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Reach (Monthly Users)</label>
+            <input type="number" id="calc-reach" value="250000" oninput="updateRiceCalc()">
+          </div>
+          <div class="calc-field">
+            <label>Impact (1.0 = Low, 3.0 = High)</label>
+            <select id="calc-impact" onchange="updateRiceCalc()">
+              <option value="3.0">3.0 - Massive Impact</option>
+              <option value="2.0" selected>2.0 - Moderate Impact</option>
+              <option value="1.0">1.0 - Low Impact</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label>Confidence (%)</label>
+            <select id="calc-conf" onchange="updateRiceCalc()">
+              <option value="1.0" selected>100% High Confidence</option>
+              <option value="0.8">80% Medium Confidence</option>
+              <option value="0.5">50% Low Confidence</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label>Effort (Person-Weeks)</label>
+            <input type="number" id="calc-effort" value="2" min="1" max="10" oninput="updateRiceCalc()">
+          </div>
+          <div class="calc-result">
+            <div id="calc-output" class="calc-result-val">250,000</div>
+            <div class="calc-result-lbl">Calculated RICE Score</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: GHERKIN BDD PRD SPECS (VISUAL & USER-FRIENDLY) -->
+    <section class="section-block" id="gherkin">
+      <div class="section-header">
+        <span class="section-tag">Section 04</span>
+        <h2 class="section-title">📝 Product Acceptance Rules & User Story Flow</h2>
+      </div>
+
+      <!-- Plain English Explanatory Pill -->
+      <div style="background:rgba(59, 130, 246, 0.1); border:1px solid var(--accent-blue); padding:14px 18px; border-radius:var(--radius-md); font-size:0.86rem; color:#93C5FD; margin-bottom:20px; display:flex; align-items:center; gap:12px;">
+        <span style="font-size:1.4rem;">💡</span>
+        <div><strong>Why PMs use Gherkin BDD:</strong> It translates complex product requirements into clear 3-step visual rules so Engineers, Designers, and QA teams align on exact edge cases without misunderstandings.</div>
+      </div>
+
+      <!-- Quick Scenario Switcher -->
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px;">
+        <button id="scen-btn-1" class="btn-hub" style="background:var(--accent-orange); color:#000; border-color:var(--accent-orange);" onclick="showVisualScen('scen1', this)">
+          🕒 1. Bus Delayed by 45+ Mins
+        </button>
+        <button id="scen-btn-2" class="btn-hub" style="background:rgba(255,255,255,0.05); color:var(--text-main); border-color:var(--border-color);" onclick="showVisualScen('scen2', this)">
+          📍 2. Boarding Location Shifted
+        </button>
+        <button id="scen-btn-3" class="btn-hub" style="background:rgba(255,255,255,0.05); color:var(--text-main); border-color:var(--border-color);" onclick="showVisualScen('scen3', this)">
+          📡 3. GPS Signal Loss (Edge Case)
+        </button>
+        <button id="scen-btn-4" class="btn-hub" style="background:rgba(255,255,255,0.05); color:var(--text-main); border-color:var(--border-color);" onclick="showVisualScen('scen4', this)">
+          🚨 4. Vehicle Breakdown
+        </button>
+      </div>
+
+      <!-- 3-Step Visual Flow Grid -->
+      <div id="visual-flow-container" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; margin-bottom:20px;">
+        <!-- Card 1: GIVEN -->
+        <div style="background:rgba(30, 41, 59, 0.6); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:20px; border-top:4px solid var(--accent-cyan);">
+          <div style="font-size:0.75rem; font-weight:800; color:var(--accent-cyan); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">
+            STEP 1: GIVEN (Initial State)
+          </div>
+          <div id="flow-given-title" style="font-size:1.05rem; font-weight:700; color:#FFF; margin-bottom:10px;">
+            Upcoming Confirmed Booking
+          </div>
+          <div id="flow-given-body" style="font-size:0.86rem; color:var(--text-muted); line-height:1.5;">
+            Passenger has a confirmed ticket for KSRTC Swift bus (Bangalore → Mysore) scheduled for departure at 8:00 PM.
+          </div>
+        </div>
+
+        <!-- Card 2: WHEN -->
+        <div style="background:rgba(245, 158, 11, 0.08); border:1px solid rgba(245, 158, 11, 0.3); border-radius:var(--radius-md); padding:20px; border-top:4px solid var(--accent-orange);">
+          <div style="font-size:0.75rem; font-weight:800; color:var(--accent-orange); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">
+            STEP 2: WHEN (Trigger Event)
+          </div>
+          <div id="flow-when-title" style="font-size:1.05rem; font-weight:700; color:#FFF; margin-bottom:10px;">
+            GPS Telemetry Detects >45m Delay
+          </div>
+          <div id="flow-when-body" style="font-size:0.86rem; color:var(--text-muted); line-height:1.5;">
+            Live GPS telemetry stream detects highway traffic anomaly near Electronic City toll, predicting a 48-minute arrival delay.
+          </div>
+        </div>
+
+        <!-- Card 3: THEN -->
+        <div style="background:rgba(16, 185, 129, 0.08); border:1px solid rgba(16, 185, 129, 0.3); border-radius:var(--radius-md); padding:20px; border-top:4px solid var(--accent-emerald);">
+          <div style="font-size:0.75rem; font-weight:800; color:var(--accent-emerald); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">
+            STEP 3: THEN (Automated Actions)
+          </div>
+          <div id="flow-then-title" style="font-size:1.05rem; font-weight:700; color:#FFF; margin-bottom:10px;">
+            Automated Proactive Execution
+          </div>
+          <ul id="flow-then-body" style="font-size:0.85rem; color:#D1D5DB; padding-left:16px; line-height:1.6;">
+            <li>💬 Send proactive WhatsApp delay notification.</li>
+            <li>🎁 Credit instant ₹150 Wallet Snack Voucher.</li>
+            <li>🔄 Offer 1-tap option to rebook alternative bus at ₹0 fee.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Optional Raw Technical Code Toggle -->
+      <details style="background:#080C14; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:14px 18px; margin-top:16px;">
+        <summary style="font-size:0.85rem; font-weight:700; color:var(--accent-orange); cursor:pointer; display:flex; align-items:center; gap:8px;">
+          <span>⚙️ View Raw Developer Technical Code (Cucumber .feature file)</span>
+        </summary>
+        <div id="gherkin-code-display" class="gherkin-container" style="margin-top:14px; border:none; background:transparent; padding:0;">
+<span class="kw-feat">Feature:</span> Real-Time Bus Delay Tracking & Automated Proactive Recovery Engine
+
+  <span class="kw-scen">Scenario:</span> Bus is delayed by more than 45 minutes on departure
+    <span class="kw-step">Given</span> a confirmed passenger has an upcoming bus booking with ID <span class="kw-str">"BUS-DISRUPT-9821"</span>
+    <span class="kw-step">And</span> the live GPS telemetry feed detects a delayed ETA exceeding <span class="kw-str">45 minutes</span> past scheduled departure
+    <span class="kw-step">When</span> the SmartRoute Anomaly Engine validates the delay against historical operator traffic models
+    <span class="kw-step">Then</span> the system shall send an automated high-priority WhatsApp alert to the passenger
+    <span class="kw-step">And</span> credit a <span class="kw-str">₹150 Wallet Snack Voucher</span> to the passenger's wallet instantly
+    <span class="kw-step">And</span> present a 1-tap option to rebook an alternative bus at <span class="kw-str">0 cancellation fee</span>.
+        </div>
+      </details>
+    </section>
+
+    <!-- SECTION 5: CSAT & NPS ANALYTICS (INTERACTIVE CLICK FOR FORMULA) -->
+    <section class="section-block" id="metrics">
+      <div class="section-header">
+        <span class="section-tag">Section 05</span>
+        <h2 class="section-title">📈 Customer Experience (CX) Analytics & Formula Calculator</h2>
+      </div>
+
+      <!-- Instruction Hint -->
+      <div style="font-size:0.83rem; color:var(--accent-orange); font-weight:700; margin-bottom:14px; display:flex; align-items:center; gap:6px;">
+        <span>👉 Click on any score card below to view its exact mathematical formula and calculation details:</span>
+      </div>
+
+      <!-- Interactive Score Cards Grid -->
+      <div class="cx-grid" style="margin-bottom:20px;">
+        <div id="card-csat" class="cx-box" style="border-top:4px solid var(--accent-emerald); cursor:pointer; transition:all 0.2s; background:rgba(16, 185, 129, 0.12);" onclick="showMetricFormula('csat', this)">
+          <div class="cx-title">CSAT (Customer Satisfaction)</div>
+          <div class="cx-val" style="color:var(--accent-emerald);">4.8 / 5.0</div>
+          <div class="cx-desc">👆 Click for Formula & Survey Trigger</div>
+        </div>
+        <div id="card-nps" class="cx-box" style="border-top:4px solid var(--accent-cyan); cursor:pointer; transition:all 0.2s;" onclick="showMetricFormula('nps', this)">
+          <div class="cx-title">NPS (Net Promoter Score)</div>
+          <div class="cx-val" style="color:var(--accent-cyan);">+52 NPS</div>
+          <div class="cx-desc">👆 Click for Formula & Breakdown</div>
+        </div>
+        <div id="card-ces" class="cx-box" style="border-top:4px solid var(--accent-orange); cursor:pointer; transition:all 0.2s;" onclick="showMetricFormula('ces', this)">
+          <div class="cx-title">CES (Customer Effort Score)</div>
+          <div class="cx-val" style="color:var(--accent-orange);">1.2 / 7.0</div>
+          <div class="cx-desc">👆 Click for Formula & Effort Scale</div>
+        </div>
+        <div id="card-cpc" class="cx-box" style="border-top:4px solid var(--accent-indigo); cursor:pointer; transition:all 0.2s;" onclick="showMetricFormula('cpc', this)">
+          <div class="cx-title">Cost Per Contact (CPC)</div>
+          <div class="cx-val" style="color:var(--accent-indigo);">₹2.20 / ticket</div>
+          <div class="cx-desc">👆 Click for Deflection & Savings Formula</div>
+        </div>
+      </div>
+
+      <!-- Dynamic Interactive Calculation Display Box -->
+      <div id="metric-formula-display" style="background:#080C14; border:1px solid var(--accent-emerald); border-radius:var(--radius-md); padding:24px; transition:all 0.3s;">
+        <div id="metric-title" style="font-weight:800; color:var(--accent-emerald); font-size:1.1rem; margin-bottom:12px;">
+          1. CSAT (Customer Satisfaction Score) Formula & Details
+        </div>
+        <div id="metric-formula" style="font-family:'JetBrains Mono'; font-size:0.85rem; background:#0F172A; border:1px solid var(--border-color); padding:14px; border-radius:8px; color:#A7F3D0; margin-bottom:14px; line-height:1.7;">
+          CSAT (%) = (Total Positive Responses [4 or 5 Stars] / Total Survey Responses) × 100<br>
+          Average CSAT Score = ∑(Ratings) / Total Responses = 4.8 / 5.0
+        </div>
+        <div id="metric-details" style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">
+          <strong>Survey Trigger & Methodology:</strong> Triggered via WhatsApp micro-survey 30 minutes after an automated 1-tap recovery (e.g. Express Cab rerouting or Wallet Snack Credit): <em>"How satisfied were you with the automated delay resolution?"</em> (Scale 1 to 5). 92% of respondents rated 4 or 5 stars.
+        </div>
+      </div>
+    </section>
+
+
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Indrani Kar | Executive Product Manager Portfolio Case Study • Bengaluru, India</p>
+    </div>
+  </footer>
+
+  <script>
+    function runScenario(scen, btn) {
+      document.querySelectorAll('.sim-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const chat = document.getElementById('chat-box');
+      const log = document.getElementById('sim-log-text');
+
+      if (scen === 'delay_45') {
+        log.innerHTML = '> GPS Telemetry Anomaly: +48 min traffic delay detected on NH-44. Dispatching Proactive WhatsApp Alert + ₹150 Wallet Snack Credit.';
+        chat.innerHTML = `
+          <div class="chat-bubble bot">
+            ⚠️ <strong>Bus Delay Alert:</strong> Your KSRTC Swift bus (#KA-01-F-8890) is delayed by <strong>45 mins</strong> due to highway traffic near Electronic City toll.
+          </div>
+          <div class="chat-bubble bot">
+            🎁 <strong>We're sorry for the wait!</strong> We've credited a <strong>₹150 Wallet Snack Voucher</strong> to your wallet.
+            <div class="action-group">
+              <button class="btn-action" onclick="alert('₹150 Snack Voucher credited to wallet!')">Claim ₹150 Snack Voucher</button>
+              <button class="btn-action sec" onclick="alert('Live tracking link shared on WhatsApp')">Share Live Location with Family</button>
+            </div>
+          </div>
+        `;
+      } else if (scen === 'boarding_shift') {
+        log.innerHTML = '> Location Anomaly: Boarding point shifted to Madiwala BPCL Pump (3.2 km away). Triggering 1-Tap Free Express Cab Dispatch.';
+        chat.innerHTML = `
+          <div class="chat-bubble bot">
+            📍 <strong>Boarding Point Update:</strong> The operator shifted boarding to <strong>Madiwala BPCL Pump</strong> to avoid city congestion.
+          </div>
+          <div class="chat-bubble bot">
+            🚕 <strong>Need a ride?</strong> Tap below for a free Express Cab pick-up right from your current location.
+            <div class="action-group">
+              <button class="btn-action" onclick="alert('Express Cab dispatched! Driver details sent via SMS.')">Dispatch Free Express Cab Pick-up</button>
+            </div>
+          </div>
+        `;
+      } else if (scen === 'breakdown') {
+        log.innerHTML = '> Critical Anomaly: Vehicle breakdown reported at Tumkur toll plaza. Initiating 0-Fee Automated Rebooking Engine.';
+        chat.innerHTML = `
+          <div class="chat-bubble bot">
+            🚨 <strong>Critical Update:</strong> Bus #KA-01-F-8890 experienced a mechanical breakdown. Service is cancelled.
+          </div>
+          <div class="chat-bubble bot">
+            ✨ <strong>Instant Rebooking Reserved:</strong> Guaranteed seat reserved on the <strong>9:15 PM VRL Volvo AC Bus</strong> at ₹0 extra charge.
+            <div class="action-group">
+              <button class="btn-action" onclick="alert('Rebooked on VRL Volvo! New e-ticket generated.')">Confirm 9:15 PM VRL Rebooking (₹0)</button>
+              <button class="btn-action sec" onclick="alert('100% Instant refund processed to bank account.')">Request Instant 100% Refund</button>
+            </div>
+          </div>
+        `;
+      } else if (scen === 'gps_loss') {
+        log.innerHTML = '> Telemetry Health Alert: GPS signal lost for >15 mins. Triggering Cell Tower Triangulation + Conductor IVR Ping (No false alerts sent).';
+        chat.innerHTML = `
+          <div class="chat-bubble bot">
+            📡 <strong>GPS Signal Check:</strong> We noticed a temporary GPS signal drop from your bus operator device.
+          </div>
+          <div class="chat-bubble bot">
+            🔍 <strong>Cell Tower Fallback Active:</strong> Our system confirmed via conductor cell tower ping that your bus is moving on schedule. Estimated departure remains 8:00 PM.
+          </div>
+        `;
+      }
+    }
+
+    function updateRiceCalc() {
+      const reach = parseFloat(document.getElementById('calc-reach').value) || 0;
+      const impact = parseFloat(document.getElementById('calc-impact').value) || 1.0;
+      const conf = parseFloat(document.getElementById('calc-conf').value) || 1.0;
+      const effort = parseFloat(document.getElementById('calc-effort').value) || 1;
+
+      const score = Math.round((reach * impact * conf) / effort);
+      document.getElementById('calc-output').innerText = score.toLocaleString();
+    }
+
+    const gherkinScenarios = {
+      scen_delay: `<span class="kw-feat">Feature:</span> Real-Time Bus Delay Tracking & Automated Proactive Recovery Engine
+
+  <span class="kw-scen">Scenario:</span> Bus is delayed by more than 45 minutes on departure
+    <span class="kw-step">Given</span> a confirmed passenger has an upcoming bus booking with ID <span class="kw-str">"BUS-DISRUPT-9821"</span>
+    <span class="kw-step">And</span> the live GPS telemetry feed detects a delayed ETA exceeding <span class="kw-str">45 minutes</span> past scheduled departure
+    <span class="kw-step">When</span> the SmartRoute Anomaly Engine validates the delay against historical operator traffic models
+    <span class="kw-step">Then</span> the system shall send an automated high-priority WhatsApp alert to the passenger
+    <span class="kw-step">And</span> credit a <span class="kw-str">₹150 Wallet Snack Voucher</span> to the passenger's wallet instantly
+    <span class="kw-step">And</span> present a 1-tap option to rebook an alternative bus at <span class="kw-str">0 cancellation fee</span>.`,
+
+      scen_shift: `<span class="kw-feat">Feature:</span> Real-Time Bus Delay Tracking & Automated Proactive Recovery Engine
+
+  <span class="kw-scen">Scenario:</span> Boarding point location shift by operator
+    <span class="kw-step">Given</span> the private bus operator updates the departure boarding point to a location <span class="kw-str">>1.5 km away</span>
+    <span class="kw-step">When</span> the operator dispatch system pings the partner API
+    <span class="kw-step">Then</span> the system shall calculate the walking distance and time delta for the passenger
+    <span class="kw-step">And</span> send an urgent notification: <span class="kw-str">"Boarding location shifted to Madiwala BPCL Pump"</span>
+    <span class="kw-step">And</span> render a 1-tap button: <span class="kw-str">"Dispatch Free Express Cab Pick-up to New Boarding Point"</span>.`,
+
+      scen_gps: `<span class="kw-feat">Feature:</span> Real-Time Bus Delay Tracking & Automated Proactive Recovery Engine
+
+  <span class="kw-scen">Scenario:</span> GPS signal loss for >15 minutes (Edge Case & Error Handling)
+    <span class="kw-step">Given</span> the bus operator's GPS device stops emitting ping telemetry for <span class="kw-str">15 consecutive minutes</span>
+    <span class="kw-step">When</span> the telemetry health check monitor triggers a <span class="kw-str">GPS_LOST_SIGNAL</span> event
+    <span class="kw-step">Then</span> the system shall fall back to cellular tower triangulation data
+    <span class="kw-step">And</span> dispatch an automated IVR ping to the bus conductor app to confirm live location
+    <span class="kw-step">And</span> refrain from sending unverified delay alerts to passengers.`,
+
+      scen_breakdown: `<span class="kw-feat">Feature:</span> Real-Time Bus Delay Tracking & Automated Proactive Recovery Engine
+
+  <span class="kw-scen">Scenario:</span> Vehicle mechanical breakdown on highway corridor
+    <span class="kw-step">Given</span> the conductor logs a breakdown event code <span class="kw-str">"MECH_FAIL_09"</span> on conductor app
+    <span class="kw-step">When</span> the disruption engine receives confirmation from the partner fleet operator
+    <span class="kw-step">Then</span> the system shall hold seat inventory on alternative partner buses along the corridor
+    <span class="kw-step">And</span> trigger automated high-priority push notification to all 36 passengers
+    <span class="kw-step">And</span> offer 1-tap choice: <span class="kw-str">"Instant 100% Refund"</span> OR <span class="kw-str">"0-Fee Volvo AC Rebooking"</span>.`
+    };
+
+    function selectGherkinScen(key, btn) {
+      document.querySelectorAll('#gherkin button.btn-hub').forEach(b => {
+        b.style.background = 'rgba(255,255,255,0.05)';
+        b.style.color = 'var(--text-main)';
+        b.style.borderColor = 'var(--border-color)';
+      });
+      btn.style.background = 'var(--accent-orange)';
+      btn.style.color = '#000';
+      btn.style.borderColor = 'var(--accent-orange)';
+
+      document.getElementById('gherkin-code-display').innerHTML = gherkinScenarios[key];
+      document.getElementById('gherkin-test-status').innerHTML = `
+        <div>⏳ <strong>BDD Test Suite Ready:</strong> Click "▶ Run BDD Test Suite" to execute automated assertions.</div>
+        <div style="color:var(--text-muted);">Status: Idle</div>
+      `;
+      document.getElementById('gherkin-test-status').style.borderColor = 'var(--border-color)';
+      document.getElementById('gherkin-test-status').style.background = 'rgba(255,255,255,0.03)';
+    }
+
+    function runGherkinTest() {
+      const statusBox = document.getElementById('gherkin-test-status');
+      statusBox.style.background = 'rgba(245, 158, 11, 0.1)';
+      statusBox.style.borderColor = 'var(--accent-orange)';
+      statusBox.innerHTML = `
+        <div>⚡ <strong>Running Automated Cucumber Assertions...</strong> Evaluating Given-When-Then rules...</div>
+        <div style="color:var(--accent-orange);">Executing...</div>
+      `;
+
+      setTimeout(() => {
+        const ms = Math.floor(25 + Math.random() * 20);
+        statusBox.style.background = 'rgba(16, 185, 129, 0.12)';
+        statusBox.style.borderColor = 'var(--accent-emerald)';
+        statusBox.innerHTML = `
+          <div>✅ <strong>BDD Test Assertion Status:</strong> All Given-When-Then criteria validated successfully (0 failures).</div>
+          <div style="font-weight:800; color:var(--accent-emerald);">PASSED (${ms}ms)</div>
+        `;
+      }, 400);
+    }
+
+    function copyGherkinCode() {
+      const code = document.getElementById('gherkin-code-display').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        alert('Gherkin BDD Feature file copied to clipboard!');
+      });
+    }
+
+    const visualScenarios = {
+      scen1: {
+        givenTitle: "Confirmed Booking & Scheduled Trip",
+        givenBody: "Passenger has a confirmed ticket for KSRTC Swift bus (Bangalore → Mysore) scheduled for 8:00 PM departure.",
+        whenTitle: "GPS Detects >45m Highway Delay",
+        whenBody: "Telemetry stream detects traffic jam near Electronic City toll, calculating an arrival delay of 48 minutes.",
+        thenTitle: "Automated Proactive Execution",
+        thenBody: `<li>💬 Send proactive WhatsApp alert with live bus tracking link.</li><li>🎁 Credit instant ₹150 Wallet Snack Voucher to wallet.</li><li>🔄 Offer 1-tap option to rebook alternative bus at ₹0 fee.</li>`
+      },
+      scen2: {
+        givenTitle: "Passenger En-Route to Boarding Point",
+        givenBody: "Passenger is heading to original Madiwala Pickup Point for 9:00 PM departure.",
+        whenTitle: "Operator Shifts Pickup Point >1.5 KM",
+        whenBody: "Bus operator changes pickup location to BPCL Pump bypass road to avoid city traffic congestion.",
+        thenTitle: "1-Tap Free Express Cab Dispatch",
+        thenBody: `<li>🚨 Send urgent WhatsApp notification: "Boarding point shifted".</li><li>🚕 Render 1-tap button: "Dispatch Free Express Cab Pick-up".</li><li>📱 Send driver contact and live cab tracking link via SMS.</li>`
+      },
+      scen3: {
+        givenTitle: "Active Journey & Tracking Active",
+        givenBody: "Bus is en-route on NH-44 highway corridor with live GPS pings being ingested every 30 seconds.",
+        whenTitle: "GPS Signal Lost for >15 Mins (Edge Case)",
+        whenBody: "Operator's onboard GPS unit stops pinging telemetry. Telemetry health monitor flags signal drop.",
+        thenTitle: "Cell Tower Triangulation Fallback",
+        thenBody: `<li>📡 Fallback to mobile cell tower triangulation data.</li><li>📞 Dispatch automated IVR ping to conductor phone app.</li><li>🛡️ Suppress unverified delay alerts to avoid passenger panic.</li>`
+      },
+      scen4: {
+        givenTitle: "36 Passengers Onboard Highway Journey",
+        givenBody: "Bus #KA-01-F-8890 is traveling on Tumkur highway corridor at 10:30 PM.",
+        whenTitle: "Conductor Reports Mechanical Breakdown",
+        whenBody: "Conductor logs event code MECH_FAIL_09 on conductor app after tire blowout / engine failure.",
+        thenTitle: "Guaranteed Rebooking & Refund",
+        thenBody: `<li>🚨 Auto-hold seat inventory on 9:15 PM VRL Volvo AC bus.</li><li>✨ Push instant 1-tap choice: "Confirm 0-Fee Volvo Rebooking".</li><li>💳 Offer alternative 1-tap choice: "Instant 100% Full Refund".</li>`
+      }
+    };
+
+    function showVisualScen(key, btn) {
+      document.querySelectorAll('#gherkin button.btn-hub').forEach(b => {
+        b.style.background = 'rgba(255,255,255,0.05)';
+        b.style.color = 'var(--text-main)';
+        b.style.borderColor = 'var(--border-color)';
+      });
+      btn.style.background = 'var(--accent-orange)';
+      btn.style.color = '#000';
+      btn.style.borderColor = 'var(--accent-orange)';
+
+      const data = visualScenarios[key];
+      document.getElementById('flow-given-title').innerText = data.givenTitle;
+      document.getElementById('flow-given-body').innerText = data.givenBody;
+      document.getElementById('flow-when-title').innerText = data.whenTitle;
+      document.getElementById('flow-when-body').innerText = data.whenBody;
+      document.getElementById('flow-then-title').innerText = data.thenTitle;
+      document.getElementById('flow-then-body').innerHTML = data.thenBody;
+    }
+
+    const metricData = {
+      csat: {
+        title: "1. CSAT (Customer Satisfaction Score) Formula & Details",
+        color: "var(--accent-emerald)",
+        bg: "#080C14",
+        formula: `CSAT (%) = (Total Positive Responses [4 or 5 Stars] / Total Survey Responses) × 100<br>Average CSAT Score = ∑(Ratings) / Total Responses = 4.8 / 5.0`,
+        details: `<strong>Survey Trigger & Methodology:</strong> Sent via WhatsApp 30 minutes after an automated 1-tap recovery (e.g. Express Cab reroute or Wallet Snack credit): <em>"How satisfied were you with the automated delay resolution?"</em> (Scale 1 to 5). 92% of respondents rated 4 or 5 stars.`
+      },
+      nps: {
+        title: "2. NPS (Net Promoter Score) Formula & Breakdown",
+        color: "var(--accent-cyan)",
+        bg: "#080C14",
+        formula: `NPS = % Promoters (Score 9-10) - % Detractors (Score 0-6)<br>Calculation: 65% Promoters - 13% Detractors = +52 NPS (+24 pts Net Uplift)`,
+        details: `<strong>Survey Trigger & Methodology:</strong> Prompted post-trip on travel app: <em>"How likely are you to recommend our Ground Transport Platform to a friend?"</em> (0 to 10 scale). Passengers receiving SmartRoute AI assistance scored +52 NPS vs unassisted delayed passengers (+28 NPS), delivering a <strong>+24 point net uplift</strong>.`
+      },
+      ces: {
+        title: "3. CES (Customer Effort Score) Formula & Effort Scale",
+        color: "var(--accent-orange)",
+        bg: "#080C14",
+        formula: `Average CES = ∑(Effort Ratings 1 to 7) / Total Responses = 1.2 / 7.0<br>(Scale: 1 = Extremely Easy / Ultra Low Effort, 7 = Extremely Difficult)`,
+        details: `<strong>Survey Trigger & Methodology:</strong> Prompted immediately after 1-tap action: <em>"The platform made it easy to handle my bus delay."</em> 1-tap WhatsApp buttons eliminate manual form fills, reducing customer effort score to 1.2 out of 7.`
+      },
+      cpc: {
+        title: "4. Support Deflection & Blended Cost Per Contact (CPC) Formula",
+        color: "var(--accent-indigo)",
+        bg: "#080C14",
+        formula: `Blended CPC = (Human Calls × ₹45.00 + AI Messages × ₹0.40) / Total Inquiries<br>AI Deflection Rate = (AI Resolved Queries / Total Inquiries) × 100 = 88.5%`,
+        details: `<strong>Financial Impact & Calculation:</strong> Inbound call center support costs ₹45.00 per human agent call. Automated WhatsApp Business API pings cost ₹0.40. With an 88.5% AI resolution rate, blended support cost per delayed passenger drops from ₹45.00 to <strong>₹2.20 per ticket</strong>.`
+      }
+    };
+
+    function showMetricFormula(type, cardEl) {
+      document.querySelectorAll('.cx-box').forEach(c => {
+        c.style.background = 'var(--bg-card)';
+      });
+      cardEl.style.background = 'rgba(255, 255, 255, 0.08)';
+
+      const data = metricData[type];
+      const display = document.getElementById('metric-formula-display');
+      display.style.borderColor = data.color;
+      document.getElementById('metric-title').innerText = data.title;
+      document.getElementById('metric-title').style.color = data.color;
+      document.getElementById('metric-formula').innerHTML = data.formula;
+      document.getElementById('metric-details').innerHTML = data.details;
+    }
+  </script>
+</body>
+</html>
